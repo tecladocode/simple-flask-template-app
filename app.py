@@ -16,16 +16,16 @@ users = {"jose": ("jose", "1234")}
 
 @app.route("/")
 def home():
-    return render_template("home.jinja2", name=session.get("username", "Unknown"))
+    return render_template("home.html", name=session.get("username", "Unknown"))
 
 
 @app.route("/login")
 def login():
-    return render_template("login.jinja2")
+    return render_template("login.html")
 
 
 @app.route("/register")
 def register():
     # Here you could register the user.
     # Add them to a database, for example.
-    return render_template("register.jinja2")
+    return render_template("register.html")
