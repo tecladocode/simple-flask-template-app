@@ -19,13 +19,31 @@ def home():
     return render_template("home.html", name=session.get("username", "Unknown"))
 
 
-@app.route("/login")
+@app.route("/login", methods=["GET", "POST"])
 def login():
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
+
+        if username in users and users[username][1] == password:
+            session["username"] = username
+            return redirect(url_for("home"))
     return render_template("login.html")
 
 
-@app.route("/register")
+@app.route("/register", methods=["GET", "POST"])
 def register():
-    # Here you could register the user.
-    # Add them to a database, for example.
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
+
+        if username not in users:
+            users[username] = (username, password)
+            return redirect(url_for("login"))
     return render_template("register.html")
+
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect(url_for("home"))
