@@ -4,6 +4,11 @@ This short code repository shows how a Flask application that serves HTML files 
 
 It is used in our blog post, "How to add user logins to your Flask website". Read that for more info!
 
+There are a few branches in this repository that add different features:
+
+* [/feature/login]() adds login, signup, and logout functionality.
+* [/feature/login_next]() adds support for the `next` url after users log in.
+
 ## Installing
 
 You'll need `flask` to run this code sample. Install it like so:
