@@ -6,6 +6,11 @@
     <form method="post">
       <label>Username: <input type="text" name="username"/></label>
       <label>Password: <input type="password" name="password"/></label>
+      <input
+        type="hidden"
+        name="next"
+        value="{{ request.args.get('next', '') }}"
+      />
       <input type="submit" /></form>
     </form>
   </body>

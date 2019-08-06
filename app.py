@@ -40,10 +40,13 @@ def login():
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
+        next_url = request.form.get("next")
 
         if username in users and users[username][1] == password:
             session["username"] = username
-            return redirect(url_for("home"))
+            if next_url:
+                return redirect(next_url)
+            return redirect(url_for("profile"))
     return render_template("login.html")
 
 
